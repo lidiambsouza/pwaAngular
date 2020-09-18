@@ -16,10 +16,17 @@ export class MarcaCarroService {
   private API_CARROS ='https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getMakes';
   constructor(private http: HttpClient) { }
 
+  public mapMarcas(marcas): MarcaCarro[]{
+    return marcas.map(marca=>({
+      codigo: marca.make_id,
+      nome: marca.make_display,
+    }))
+  }
+
   public getMarcas():Observable<MarcaCarro[]>{
     return this.http.jsonp(this.API_CARROS, 'callback')
     .pipe(
-      map(())
+      map((resultado: CarResponse)=>this.mapMarcas(resultado.Makes))
     )
   }
 }

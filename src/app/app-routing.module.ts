@@ -4,7 +4,7 @@ import { CadastroSeguroComponent, ListarSegurosComponent} from './components';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'cadastro'}
+  {path: '', pathMatch: 'full', redirectTo: 'cadastro'},
   {path:'cadastro', component: CadastroSeguroComponent},
   {path:'listar', component: ListarSegurosComponent},
 ];
